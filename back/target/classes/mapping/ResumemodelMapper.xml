@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mini.miniapp.mapper.ResumemodelMapper">
+  <resultMap id="BaseResultMap" type="com.mini.miniapp.pojo.Resumemodel">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="resume_type" jdbcType="VARCHAR" property="resumeType" />
+    <result column="fit_crowd" jdbcType="INTEGER" property="fitCrowd" />
+    <result column="model_url" jdbcType="VARCHAR" property="modelUrl" />
+    <result column="model_img" jdbcType="VARCHAR" property="modelImg" />
+  </resultMap>
+  <select id="queryAllResume" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from resumemodel where fit_crowd=#{id}
+  </select>
+  <select id="queryAll" resultMap="BaseResultMap">
+    select * from resumemodel
+  </select>
+  <select id="queryResumeById"  parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from resumemodel where id=#{id}
+  </select>
+  <update id="modifyNewsById" parameterType="com.mini.miniapp.pojo.Resumemodel">
+    update resumemodel set resume_type=#{resumeType},fit_crowd=#{fitCrowd},model_url=#{modelUrl},model_img=#{modelImg}
+    where id=#{id}
+  </update>
+  <delete id="deleteResumeById" parameterType="java.lang.Integer">
+    delete from resumemodel where id=#{id}
+  </delete>
+</mapper>
